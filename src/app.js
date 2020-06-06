@@ -1,32 +1,31 @@
 const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
-const validateData = require("./util/validations");
-const databaseOperations = require("./json/database");
-//--------------------------------------------------------------------------
+
 const app = express();
 const port = process.env.PORT || 8000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.post("/register", function(req, res) {
-  data = {
-    ...req.body
-  };
-  validationResult = validateData.validateData(data);
-  if (validationResult.status == 200) {
-    databaseOperations.addData(data);
-    res.status(200).send(data);
-  } else {
-    res.status(validationResult.status).send(validationResult);
-  }
-});
+app.use(express.static(path.join(__dirname, '/public/')));
+app.set('views',path.join(__dirname,'/views/'));
+app.set('view engine', 'ejs');
 
-app.get("/admin", function(req, res) {
-  response = databaseOperations.getAllData();
-  res.end(JSON.stringify(response));
-});
+const regestrationRoute = require(path.join(__dirname,'/routes/registrationRoutes'))();
+const adminRoute = require(path.join(__dirname,'/routes/adminRoutes'))();
+app.use('/registration',regestrationRoute);
+app.use('/admin',adminRoute);
+
+app.get('/', (req,res) => {
+  console.log(path.join(__dirname,'/views/'));
+  res.render(
+    'index',
+    {
+      title: 'Home'
+    }
+  )
+})
 
 var server = app.listen(port, function() {
   var host = server.address().address;
