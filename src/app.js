@@ -1,7 +1,11 @@
-var app = require("express")();
-var bodyParser = require("body-parser");
-var validateData = require("./validations");
-var databaseOperations = require("./database");
+const express = require("express");
+const path = require("path");
+const bodyParser = require("body-parser");
+const validateData = require("./util/validations");
+const databaseOperations = require("./json/database");
+//--------------------------------------------------------------------------
+const app = express();
+const port = process.env.PORT || 8000;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -24,7 +28,7 @@ app.get("/admin", function(req, res) {
   res.end(JSON.stringify(response));
 });
 
-var server = app.listen(8000, function() {
+var server = app.listen(port, function() {
   var host = server.address().address;
   var port = server.address().port;
   console.log("Example app listening at http://%s:%s", host, port);
