@@ -1,3 +1,5 @@
+const databaseOperations = require("../json/databaseOperations");
+
 validationResult = {
   status: 200,
   message: "valid"
@@ -8,8 +10,7 @@ modifyValidationResult = (status, message) => {
   validationResult.message = message;
 };
 
-exports.validateData = function(data) {
-  console.log(data);
+checkRequiredFields = (data) => {
   if (!data) {
     modifyValidationResult(400, "Please fill registration information");
   } else if (!data.fullName) {
@@ -23,5 +24,22 @@ exports.validateData = function(data) {
   } else if (!data.courses || data.courses.length == 0) {
     modifyValidationResult(400, "Atleaast one course is mandatory");
   }
+};
+
+checkExistence = (data) => {
+  database = databaseOperations.getSadhakData();
+  database.forEach((user) => {
+    if (
+      user.fullName.toLowerCase() === data.fullName.toLowerCase() &&
+      user.mobile === data.mobile
+    ) {
+      modifyValidationResult(400, "User already exists");
+    }
+  });
+};
+
+exports.validateData = (data) => {
+  checkRequiredFields(data);
+  checkExistence(data);
   return validationResult;
 };

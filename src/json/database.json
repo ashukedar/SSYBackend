@@ -1,0 +1,17 @@
+{
+  "sadhakData": [
+    {
+      "id": 1,
+      "fullName": "Ashutosh Kedar",
+      "dob": "10/04/1997",
+      "mobile": "7123456780",
+      "alternateMob": "9876543210",
+      "qualification": "b tech",
+      "occupation": "software engg",
+      "email": "ashutosh10.kedar@gmail.com",
+      "address": "Bhosari",
+      "courses": ["SSY", "AMC"]
+    }
+  ],
+  "adminData": { "username": "admin", "password": "password" }
+}
