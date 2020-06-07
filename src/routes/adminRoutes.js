@@ -8,8 +8,8 @@ const adminRouter = express.Router();
 
 function router() {
   adminRouter.route("/").get((req, res) => {
-    response = databaseOperations.getSadhakData();
-    res.end(JSON.stringify(response));
+    sadhakData = databaseOperations.getSadhakData();
+    res.render("admin/admin", { sadhakData: sadhakData, title: "Sadhak Data" });
   });
 
   adminRouter.route("/:id").put((req, res) => {

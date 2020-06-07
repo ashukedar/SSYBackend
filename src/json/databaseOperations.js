@@ -5,8 +5,6 @@ const readDatabase = () => {
   database = [];
   jsonString = fs.readFileSync(path.join(__dirname, "/database.json"));
   database = JSON.parse(jsonString);
-  console.log("readdatabase");
-  console.log(database);
   return database;
 };
 
@@ -19,8 +17,6 @@ const writeDatabase = (sadhakData) => {
 
 const getSadhakData = () => {
   database = readDatabase();
-  console.log("getSadhakData");
-  console.log(database.sadhakData);
   return database.sadhakData;
 };
 
@@ -46,9 +42,7 @@ const editData = (data) => {
 const doesExists = (id) => {
   exists = false;
   database = getSadhakData();
-  console.log("id: " + id);
   database.forEach((user) => {
-    console.log("userID: " + user.id);
     if (user.id == id) exists = true;
   });
   return exists;

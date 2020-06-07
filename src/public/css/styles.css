@@ -1,0 +1,31 @@
+body {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.data-panel {
+  border-collapse: collapse;
+  width: 100%;
+  table-layout: auto;
+  border: 1px solid #a6a6a6;
+}
+.data-panel th {
+  text-align: left;
+}
+.data-panel tr:nth-child(odd) {
+  background-color: #a6a6a6;
+}
+.data-panel td {
+  padding: 5px;
+}
+.data-panel td input {
+  width: 100%;
+}
+
+.error {
+  color: #ff0000;
+}

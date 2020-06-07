@@ -18,7 +18,6 @@ app.use('/registration',regestrationRoute);
 app.use('/admin',adminRoute);
 
 app.get('/', (req,res) => {
-  console.log(path.join(__dirname,'/views/'));
   res.render(
     'index',
     {
