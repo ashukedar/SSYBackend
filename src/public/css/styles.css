@@ -29,3 +29,12 @@ body {
 .error {
   color: #ff0000;
 }
+
+
+.footer-template {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  background-color: #a6a6a6;
+  width: 100%;
+}
