@@ -11,26 +11,27 @@ function router() {
     sadhakData = databaseOperations.getSadhakData();
     res.render("admin/admin", {
       sadhakData: sadhakData,
-      title: "Sadhak Data",
+      title: "Sadhak Data"
     });
   });
 
   adminRouter.route("/:id").post((req, res) => {
     id = req.params.id;
+    message = "";
     data = { ...req.body, id: parseInt(req.params.id) };
-    if (databaseOperations.doesExists(id)) {
+    if (!databaseOperations.doesExists(id)) message = "No such id exists";
+    else {
       validationResult = validateData.validateData(data);
-      if (validationResult.status == 200) {
+      if (validationResult.status != 200) message = validationResult.message;
+      else {
         databaseOperations.editData(data);
-        return res.redirect("/admin");
-      } else {
-        res.status(validationResult.status).send(validationResult);
+        message = "Data updated successfully";
       }
-    } else {
-      res
-        .status(validationResult.status)
-        .send({ status: 400, message: "No such id exists" });
     }
+    return res.render("admin/result", {
+      title: "Sadhak Data",
+      message: message
+    });
   });
 
   return adminRouter;
