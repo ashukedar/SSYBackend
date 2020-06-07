@@ -18,19 +18,81 @@
       <th>Courses</th>
       <th></th>
     </tr>
-    <% sadhakData.forEach( data => { %>
-    <tr>
-      <td><input value=<%= data.fullName %>></td>
-      <td><input value=<%= data.dob %>></td>
-      <td><input value=<%= data.mobile %>></td>
-      <td><input value=<%= data.alternateMob %>></td>
-      <td><input value=<%= data.qualification %>></td>
-      <td><input value=<%= data.occupation %>></td>
-      <td><input value=<%= data.email %>></td>
-      <td><input value=<%= data.address %>></td>
-      <td><input value=<%= data.courses %>></td>
-      <td><a href="">Edit</a></td>
-    </tr>
+    <% sadhakData.forEach(data => { %>
+      <form action=<%= "admin/"+data.id %> method="POST">
+        <tr>
+            <td>
+              <input
+                id=<%= "fullName"+data.id %>
+                name="fullName"
+                placeholder="fullName"
+                value="<%= data.fullName %>">
+            </td>
+            <td>
+              <input
+              id=<%= "dob"+data.id %>
+              name="dob"
+              placeholder="dob"
+              value="<%= data.dob %>">
+            </td>
+            <td>
+              <input
+                id=<%= "mobile"+data.id %>
+                name="mobile"
+                placeholder="mobile"
+                value="<%= data.mobile %>">
+            </td>
+            <td>
+              <input
+                id=<%= "alternateMob"+data.id %>
+                name="alternateMob"
+                placeholder="alternateMob"
+                value="<%= data.alternateMob %>">
+            </td>
+            <td>
+              <input
+                id=<%= "qualification"+data.id %>
+                name="qualification"
+                placeholder="qualification"
+                value="<%= data.qualification %>">
+            </td>
+            <td>
+              <input
+                id=<%= "occupation"+data.id %>
+                name="occupation"
+                placeholder="occupation"
+                value="<%= data.occupation %>">
+            </td>
+            <td>
+              <input
+                id=<%= "email"+data.id %>
+                name="email"
+                placeholder="email"
+                value="<%= data.email %>">
+            </td>
+            <td>
+              <input
+                id=<%= "address"+data.id %>
+                name="address"
+                placeholder="address"
+                value="<%= data.address %>">
+            </td>
+            <td>
+              <input
+                id=<%= "courses"+data.id %>
+                name="courses"
+                placeholder="courses"
+                value="<%= data.courses %>">
+            </td>
+            <td>
+              <button
+                type="submit"
+                id=<%= "submit"+data.id %>>
+                  Save
+              </button>
+            </td>
+        </tr>
+      </form>
     <% }); %>
   </table>
 </div>

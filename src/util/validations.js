@@ -31,7 +31,8 @@ checkExistence = (data) => {
   database.forEach((user) => {
     if (
       user.fullName.toLowerCase() === data.fullName.toLowerCase() &&
-      user.mobile === data.mobile
+      user.mobile === data.mobile &&
+      user.id !== data.id
     ) {
       modifyValidationResult(400, "User already exists");
     }

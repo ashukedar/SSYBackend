@@ -33,9 +33,18 @@ const editData = (data) => {
   modifiedUser = { ...data };
   sadhakData.forEach((user) => {
     if (user.id === data.id) {
-      user = modifiedUser;
+      user.fullName = modifiedUser.fullName;
+      user.dob = modifiedUser.dob;
+      user.mobile = modifiedUser.mobile;
+      user.alternateMob = modifiedUser.alternateMob;
+      user.qualification = modifiedUser.qualification;
+      user.occupation = modifiedUser.occupation;
+      user.email = modifiedUser.email;
+      user.address = modifiedUser.address;
+      user.courses = modifiedUser.courses;
     }
   });
+  writeDatabase(sadhakData);
   return modifiedUser;
 };
 
