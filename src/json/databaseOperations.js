@@ -22,7 +22,12 @@ const getSadhakData = () => {
 
 const addData = (data) => {
   sadhakData = getSadhakData();
-  newUser = { ...data, id: sadhakData.length + 1 };
+  newIndex =
+    Math.max.apply(
+      Math,
+      sadhakData.map((u) => u.id)
+    ) + 1;
+  newUser = { ...data, id: newIndex };
   sadhakData.push(newUser);
   writeDatabase(sadhakData);
   return newUser;
@@ -45,7 +50,17 @@ const editData = (data) => {
     }
   });
   writeDatabase(sadhakData);
-  return modifiedUser;
+};
+
+const removeData = (id) => {
+  console.log(id);
+  sadhakData = getSadhakData();
+  const index = sadhakData.findIndex((u) => u.id === id);
+  console.log(index);
+  const newData = sadhakData
+    .slice(0, index)
+    .concat(sadhakData.slice(index + 1, sadhakData.length));
+  writeDatabase(newData);
 };
 
 const doesExists = (id) => {
@@ -61,3 +76,4 @@ exports.addData = addData;
 exports.getSadhakData = getSadhakData;
 exports.editData = editData;
 exports.doesExists = doesExists;
+exports.removeData = removeData;
