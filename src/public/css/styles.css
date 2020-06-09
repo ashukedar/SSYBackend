@@ -3,8 +3,25 @@ body {
 }
 
 .container {
-  display: flex;
   justify-content: space-between;
+  max-width: 100%;
+  background-repeat: repeat;
+}
+
+.mainContent {
+  background-image: url("/images/siteBg.jpg");
+}
+
+.navButton {
+  align-self: center;
+}
+
+img {
+  width: 100%;
+}
+
+.noPadding {
+  padding: 0px;
 }
 
 .data-panel {
@@ -30,11 +47,17 @@ body {
   color: #ff0000;
 }
 
-
 .footer-template {
-  position: fixed;
+  position: unset;
   left: 0;
   bottom: 0;
   background-color: #a6a6a6;
+  width: 100%;
+}
+
+.header-template {
+  position: unset;
+  left: 0;
+  top: 0;
   width: 100%;
 }

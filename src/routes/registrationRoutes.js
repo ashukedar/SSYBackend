@@ -3,12 +3,15 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const validateData = require("../util/validations");
 const databaseOperations = require("../json/databaseOperations");
-
 const registrationRouter = express.Router();
 
 function router() {
   registrationRouter.route("/").get((req, res) => {
-    res.send("registartion router");
+    res.render("register/home", {});
+  });
+
+  registrationRouter.route("/register").get((req, res) => {
+    res.render("register/register", {});
   });
 
   registrationRouter.route("/").post((req, res) => {
