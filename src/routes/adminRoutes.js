@@ -30,6 +30,7 @@ function router() {
     }
     return res.render("admin/result", {
       title: "Sadhak Data",
+      redirectTo: "/admin",
       message: message,
     });
   });

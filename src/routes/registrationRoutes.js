@@ -11,15 +11,19 @@ function router() {
   });
 
   registrationRouter.route("/").post((req, res) => {
-    data = {
-      ...req.body
-    };
+    message = "";
+    data = { ...req.body };
     validationResult = validateData.validateData(data);
-    if (validationResult.status == 200) {
-      res.status(200).send(databaseOperations.addData(data));
-    } else {
-      res.status(validationResult.status).send(validationResult);
+    if (validationResult.status !== 200) message = validationResult.message;
+    else {
+      databaseOperations.addData(data);
+      message = "Registered Successfully";
     }
+    return res.render("admin/result", {
+      title: "Sadhak Data",
+      redirectTo: "/",
+      message: message
+    });
   });
 
   return registrationRouter;

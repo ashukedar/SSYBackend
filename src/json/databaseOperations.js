@@ -27,10 +27,8 @@ const addData = (data) => {
       Math,
       sadhakData.map((u) => u.id)
     ) + 1;
-  newUser = { ...data, id: newIndex };
-  sadhakData.push(newUser);
+  sadhakData.push({ ...data, id: newIndex });
   writeDatabase(sadhakData);
-  return newUser;
 };
 
 const editData = (data) => {

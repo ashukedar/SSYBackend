@@ -3,5 +3,40 @@
 <link rel="stylesheet" href="css/bootstrap.min.css" />
 <link rel="stylesheet" href="css/styles.css" />
 
-Registration page
+<div class="Registration mainContent">
+    <form action=<%= "registration" %> method="POST">
+        <div class="container">
+          <h1>Register</h1>
+          <p>Please fill in this form to create an account.</p>
+          <hr>
+
+          <label for="fullName"><b>Full Name</b></label>
+          <input type="text" placeholder="Full Name" name="fullName" id="fullName" required>
+
+          <label for="dob"><b>Date of birth</b></label>
+          <input type="date" id="dob" name="dob" placeholder="Date of birth" required>
+
+          <label for="email"><b>Mobile</b></label>
+          <input type="text" id="mobile" name="mobile" placeholder="Mobile" required>
+
+          <label for="alternateMob"><b>Alternate Mobile</b></label>
+          <input type="text" id="alternateMob" name="alternateMob" placeholder="Alternate Mobile" required>
+
+          <label for="qualification"><b>Qualification</b></label>
+          <input type="text" id="qualification" name="qualification" placeholder="Qualification" required>
+
+          <label for="occupation"><b>Occupation</b></label>
+          <input type="text" id="occupation" name="occupation" placeholder="Occupation" required>
+
+          <label for="address"><b>Address</b></label>
+          <input type="text" id="address" name="address" placeholder="Address" required>
+
+          <label for="courses"><b>Course</b></label>
+          <input type="text" id="courses" name="courses" placeholder="Courses" required>
+
+          <button type="submit" class="registerbtn">Register</button>
+        </div>        
+      </form>
+</div>
+
 <%- include('../templates/footer') %>
