@@ -7,10 +7,6 @@ const registrationRouter = express.Router();
 
 function router() {
   registrationRouter.route("/").get((req, res) => {
-    res.render("register/home", {});
-  });
-
-  registrationRouter.route("/register").get((req, res) => {
     res.render("register/register", {});
   });
 

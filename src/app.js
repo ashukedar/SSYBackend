@@ -12,12 +12,12 @@ app.use(express.static(path.join(__dirname, "/public")));
 app.set("views", path.join(__dirname, "/views/"));
 app.set("view engine", "ejs");
 
-const regestrationRoute = require(path.join(
+const registrationRoute = require(path.join(
   __dirname,
   "/routes/registrationRoutes"
 ))();
 const adminRoute = require(path.join(__dirname, "/routes/adminRoutes"))();
-app.use("/registration", regestrationRoute);
+app.use("/registration", registrationRoute);
 app.use("/admin", adminRoute);
 
 app.get("/", (req, res) => {
